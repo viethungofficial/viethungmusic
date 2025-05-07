@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Phan Viết Hưng | Frontend Developer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Poppins", sans-serif;
+        scroll-behavior: smooth;
+      }
+      .glow {
+        box-shadow: 0 0 20px #4ade80;
+      }
+      .highlight:hover {
+        background-color: #4ade80;
+        color: black;
+        transition: 0.3s ease-in-out;
+        cursor: pointer;
+      }
+      .fade-in {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.6s ease, transform 0.6s ease;
+      }
+      .fade-in-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      /* Hiệu ứng Hover cho hình ảnh */
+      .image-hover {
+        transition: transform 0.5s ease, box-shadow 0.3s ease;
+        border-radius: 10px;
+      }
+      .image-hover:hover {
+        transform: translateY(-10px) scale(1.05);
+        box-shadow: 0 10px 20px rgba(0, 255, 0, 0.5);
+        cursor: pointer;
+      }
+      /* Đảm bảo ảnh có tỷ lệ dọc */
+      .portrait-image {
+        object-fit: cover;
+        height: 510px;
+        width: 100%;
+        border-radius: 10px;
+      }
+      /* Căn giữa video */
+      iframe {
+        max-width: 100%;
+        width: 560px;
+        height: 315px;
+        display: block;
+        margin: 0 auto;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-900 text-green-300">
+    <!-- Thông tin cá nhân -->
+    <section
+      class="min-h-screen flex flex-col items-center justify-center text-center px-6"
+      id="intro"
+    >
+      <img
+        src="data:image/jpeg;base64,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"
+        alt="Avatar"
+        class="w-40 h-40 rounded-full glow border-4 border-green-500 object-cover mb-4"
+      />
+      <h1 class="text-4xl md:text-5xl font-bold text-green-400">
+        Phan Viết Hưng
+      </h1>
+      <p class="mt-2 text-lg text-green-200 italic">
+        Có công mài sắt, có này nên kim
+      </p>
+      <div class="mt-6 text-lg text-green-200">
+        <p>Ngày sinh: 15/06/2001</p>
+        <p>Địa chỉ: Đà Nẵng</p>
+        <p>Ứng dụng phần mềm - Cao đẳng FPT Polytechnic Đà Nẵng</p>
+        <p>Điện, Điện tử viễn thông - Đại học Bách Khoa Đà Nẵng</p>
+      </div>
+      <br>
+      <h2 class="text-3xl font-bold mb-6 text-green-400">🧠 Kỹ năng</h2>
+      <div class="flex flex-wrap justify-center gap-6">
+        <div
+          class="bg-green-500 text-black rounded-full px-6 py-2 shadow hover:scale-110 transition-transform"
+        >
+          <i class="fa-brands fa-windows"></i> Windows
+        </div>
+        <div
+          class="bg-green-500 text-black rounded-full px-6 py-2 shadow hover:scale-110 transition-transform"
+        >
+          <i class="fa-solid fa-server"></i> Server
+        </div>
+        <div
+          class="bg-green-500 text-black rounded-full px-6 py-2 shadow hover:scale-110 transition-transform"
+        >
+          <i class="fa-solid fa-database"></i> CSDL
+        </div>
+        <div
+          class="bg-green-500 text-black rounded-full px-6 py-2 shadow hover:scale-110 transition-transform"
+        >
+          <i class="fa-solid fa-network-wired"></i> CCNA
+        </div>
+      </div>
+    </section>
+
+        <!-- Images Section -->
+        <section class="py-10 px-6 bg-gray-800 text-center fade-in" id="images">
+          <h2 class="text-3xl font-bold mb-6 text-green-400">📸</h2>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="bg-gray-700 rounded-lg p-4 shadow-lg">
+              <img src="images/image1.jpg" alt="Image 1" class="portrait-image image-hover mb-4" />
+            </div>
+            <div class="bg-gray-700 rounded-lg p-4 shadow-lg">
+              <img src="images/image2.jpg" alt="Image 2" class="portrait-image image-hover mb-4" />
+            </div>
+            <div class="bg-gray-700 rounded-lg p-4 shadow-lg">
+              <img src="images/image3.jpg" alt="Image 3" class="portrait-image image-hover mb-4" />
+            </div>
+          </div>
+        </section>
+
+    <!-- Video Section -->
+    <section class="py-10 px-6 bg-gray-800 text-center fade-in" id="video">
+      <h2 class="text-3xl font-bold mb-6 text-green-400">🎥</h2>
+      <div class="relative">
+        <iframe
+          src="https://www.youtube.com/embed/37lQccD9vts?start=136"
+          frameborder="0"
+          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+      </div>
+    </section>
+
+    <!-- Skills Section  -->
+    <section class="py-10 px-6 bg-gray-800 text-center fade-in" id="skills">
+      
+    </section>
+
+    <!-- Contact Section  -->
+    <section class="py-10 px-6 bg-gray-900 text-center fade-in" id="contact">
+      <h2 class="text-3xl font-bold mb-6 text-green-400">📱 Liên hệ</h2>
+      <div class="flex justify-center flex-wrap gap-6 text-lg">
+        <a href="mailto:abc@gmail.com" class="hover:text-green-200"
+          ><i class="fa-solid fa-envelope"></i> hungphan.ithelpdesk</a
+        >
+        <a href="tel:1234567890" class="hover:text-green-200"
+          ><i class="fa-solid fa-phone"></i> 0838753811</a
+        >
+        <a
+          href="https://www.facebook.com/ChuHungShipper9x"
+          target="_blank"
+          class="hover:text-green-200"
+          ><i class="fa-brands fa-facebook"></i> Phan Viết Hưng</a
+        >
+        <a
+          href="https://www.instagram.com/viethungofficial/"
+          target="_blank"
+          class="hover:text-green-200"
+          ><i class="fa-brands fa-instagram"></i> Phan Viết Hưng</a
+        >
+        <a
+          href="https://www.tiktok.com/@viethungofficial"
+          target="_blank"
+          class="hover:text-green-200"
+          ><i class="fa-brands fa-tiktok"></i> Viết Hưng Music</a
+        >
+        <a
+          href="https://www.youtube.com/@viethungofficial1506"
+          target="_blank"
+          class="hover:text-green-200"
+          ><i class="fa-brands fa-youtube"></i> Viết Hưng Music</a
+        >
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-center text-sm p-6 bg-green-700 text-white">
+      © 2025 Phan Viết Hưng. All rights reserved.
+    </footer>
+
+    <script>
+      const sections = document.querySelectorAll(".fade-in");
+      const options = {
+        threshold: 0.5
+      };
+
+      const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("fade-in-visible");
+          }
+        });
+      }, options);
+
+      sections.forEach((section) => {
+        observer.observe(section);
+      });
+    </script>
+  </body>
+</html>
